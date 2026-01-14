@@ -7,23 +7,17 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export default function Modal({
-  isOpen,
-  title,
-  onClose,
-  children,
-}: ModalProps) {
+export default function Modal({ isOpen, title, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-lg dark:bg-zinc-900">
-        <header className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">{title}</h2>
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
+      <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl dark:bg-zinc-900 transform transition-all duration-300">
+        <header className="mb-6 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{title}</h2>
           <button
             onClick={onClose}
-            className="text-xl leading-none text-zinc-500 hover:text-zinc-800"
+            className="text-2xl leading-none text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors"
           >
             ×
           </button>

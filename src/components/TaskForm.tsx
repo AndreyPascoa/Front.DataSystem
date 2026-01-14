@@ -4,11 +4,7 @@ import { statusToId } from "@/utils/statusMapper";
 
 interface Props {
   initialData?: Task | null;
-  onSubmit: (data: {
-    title: string;
-    description?: string;
-    statusId: number;
-  }) => void;
+  onSubmit: (data: { title: string; description?: string; statusId: number }) => void;
   onCancel: () => void;
 }
 
@@ -25,45 +21,37 @@ export default function TaskForm({ initialData, onSubmit, onCancel }: Props) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
-    console.log("Status selecionado:", status);
-    console.log("StatusId enviado:", statusToId[status]);
-
-    onSubmit({
-      title,
-      description,
-      statusId: statusToId[status],
-    });
+    onSubmit({ title, description, statusId: statusToId[status] });
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label className="text-sm font-medium">Título</label>
+        <label className="text-sm font-semibold">Título</label>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
           maxLength={100}
-          className="mt-1 w-full rounded-lg border px-3 py-2"
+          className="mt-2 w-full rounded-xl border px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-black dark:bg-zinc-800 dark:border-zinc-700 dark:text-white"
         />
       </div>
 
       <div>
-        <label className="text-sm font-medium">Descrição</label>
+        <label className="text-sm font-semibold">Descrição</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="mt-1 w-full rounded-lg border px-3 py-2"
+          className="mt-2 w-full rounded-xl border px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-black dark:bg-zinc-800 dark:border-zinc-700 dark:text-white"
         />
       </div>
 
       <div>
-        <label className="text-sm font-medium">Status</label>
+        <label className="text-sm font-semibold">Status</label>
         <select
           value={status}
           onChange={(e) => setStatus(e.target.value as TaskStatus)}
-          className="mt-1 w-full rounded-lg border px-3 py-2"
+          className="mt-2 w-full rounded-xl border px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-black dark:bg-zinc-800 dark:border-zinc-700 dark:text-white"
         >
           {statusOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -73,18 +61,18 @@ export default function TaskForm({ initialData, onSubmit, onCancel }: Props) {
         </select>
       </div>
 
-      <div className="flex justify-end gap-2 pt-4">
+      <div className="flex justify-end gap-3 pt-5">
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-lg border px-4 py-2"
+          className="rounded-xl border px-5 py-2 text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800 transition"
         >
           Cancelar
         </button>
 
         <button
           type="submit"
-          className="rounded-lg bg-black px-4 py-2 text-white"
+          className="rounded-xl bg-black px-5 py-2 text-white hover:bg-zinc-900 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition"
         >
           Salvar
         </button>
