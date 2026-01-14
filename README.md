@@ -5,7 +5,7 @@ Permite criar, editar, excluir e filtrar tarefas por status.
 
 ---
 
-## 🛠 Pré-requisitos
+## Pré-requisitos
 
 * [Node.js](https://nodejs.org/) v18+
 * npm ou yarn
@@ -29,7 +29,6 @@ API disponível em `https://localhost:5121`.
 ```bash
 cd ../frontend
 npm install   # ou yarn install
-# Crie .env.local com a URL da API
 NEXT_PUBLIC_API_URL=http://localhost:5121
 npm run dev   # ou yarn dev
 ```
