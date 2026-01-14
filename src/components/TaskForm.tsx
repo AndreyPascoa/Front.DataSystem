@@ -12,27 +12,27 @@ interface Props {
   onCancel: () => void;
 }
 
-export default function TaskForm({
-  initialData,
-  onSubmit,
-  onCancel,
-}: Props) {
-  const [title, setTitle] = useState(initialData?.titulo ?? "");
-  const [description, setDescription] = useState(
-    initialData?.descricao ?? ""
-  );
+const statusOptions: { label: string; value: TaskStatus }[] = [
+  { label: "Pendente", value: "Pendente" },
+  { label: "Em Progresso", value: "EmProgresso" },
+  { label: "Concluída", value: "Concluida" },
+];
 
-  const [status, setStatus] = useState<TaskStatus>(
-    initialData?.status ?? "Pendente"
-  );
+export default function TaskForm({ initialData, onSubmit, onCancel }: Props) {
+  const [title, setTitle] = useState(initialData?.titulo ?? "");
+  const [description, setDescription] = useState(initialData?.descricao ?? "");
+  const [status, setStatus] = useState<TaskStatus>(initialData?.status ?? "Pendente");
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
+    console.log("Status selecionado:", status);
+    console.log("StatusId enviado:", statusToId[status]);
+
     onSubmit({
       title,
       description,
-      statusId: statusToId[status], // ✅ AQUI ESTÁ A CORREÇÃO
+      statusId: statusToId[status],
     });
   }
 
@@ -65,9 +65,11 @@ export default function TaskForm({
           onChange={(e) => setStatus(e.target.value as TaskStatus)}
           className="mt-1 w-full rounded-lg border px-3 py-2"
         >
-          <option value="Pendente">Pendente</option>
-          <option value="EmProgresso">Em Progresso</option>
-          <option value="Concluida">Concluída</option>
+          {statusOptions.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
         </select>
       </div>
 

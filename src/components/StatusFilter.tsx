@@ -9,7 +9,7 @@ const options: (TaskStatus | "Todos")[] = [
   "Todos",
   "Pendente",
   "EmProgresso",
-  "Concluída",
+  "Concluida",
 ];
 
 export default function StatusFilter({ value, onChange }: Props) {

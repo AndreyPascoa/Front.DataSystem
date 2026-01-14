@@ -27,7 +27,6 @@ API disponível em `https://localhost:5121`.
 ```bash
 cd ../frontend
 npm install   # ou yarn install
-# Crie .env.local com a URL da API
 NEXT_PUBLIC_API_URL=http://localhost:5121
 npm run dev   # ou yarn dev
 ```

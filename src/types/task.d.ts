@@ -1,4 +1,4 @@
-export type TaskStatus = "Pendente" | "EmProgresso" | "Concluída";
+export type TaskStatus = "Pendente" | "EmProgresso" | "Concluida";
 
 export interface Task {
     id: string;
