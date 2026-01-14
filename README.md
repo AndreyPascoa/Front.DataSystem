@@ -5,12 +5,10 @@ Permite criar, editar, excluir e filtrar tarefas por status.
 
 ---
 
-## 🛠 Pré-requisitos
+## Pré-requisitos
 
 * [Node.js](https://nodejs.org/) v18+
 * npm ou yarn
-* [.NET SDK](https://dotnet.microsoft.com/en-us/download) v7+
-* SQL Server
 
 ---
 
